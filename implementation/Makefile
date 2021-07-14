@@ -34,6 +34,8 @@ all:unity/unity.c src/prac.c test/test_prac.c $(BUILD)
 test:$(BUILD)
 	gcc $(TEST_SRC) $(INC) -o $(TEST_OUTPUT) 
 	./$(TEST_OUTPUT)	
+memcheck:
+	valgrind ./$(TEST_OUTPUT)	
 
 $(BUILD):
 	mkdir $(BUILD)
