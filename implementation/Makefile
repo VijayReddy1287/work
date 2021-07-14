@@ -35,7 +35,7 @@ test:$(BUILD)
 	gcc $(TEST_SRC) $(INC) -o $(TEST_OUTPUT) 
 	./$(TEST_OUTPUT)	
 
-$(BUILD_DIR):
+$(BUILD):
 	mkdir $(BUILD)
 
 run:all
