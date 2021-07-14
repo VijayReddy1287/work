@@ -29,7 +29,7 @@ endif
 
 TEST_OUTPUT = $(BUILD)/Test_$(PROJECT_NAME).$(EXEC)
 
-all:unity/unity.c src/prac.c test/test_prac.c $(BUILD_DIR)
+all:unity/unity.c src/prac.c test/test_prac.c $(BUILD)
 	gcc unity/unity.c src/prac.c test/test_prac.c $(INC) -o $(call FixPath,$(BUILD)/$(PROJECT_NAME).$(EXEC))
 test:$(BUILD)
 	gcc $(TEST_SRC) $(INC) -o $(TEST_OUTPUT) 
