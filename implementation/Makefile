@@ -1,9 +1,12 @@
 PROJECT_NAME=work
-BUILD_DIR=Build
+BUILD=Build
 
 
 
 
+TEST_SRC=src/prac.c\
+test/test_prac.c\
+unity/unity.c
 
 # All include folders with header files
 INC	= -Iinc\
@@ -11,7 +14,7 @@ INC	= -Iinc\
 
 #Library Inlcudes
 #INCLUDE_LIBS = 
-INCLUDE_LIBS = -lcunit
+#INCLUDE_LIBS = -lcunit
 
 
 ifdef OS
@@ -24,11 +27,16 @@ else
 	endif	
 endif
 
+TEST_OUTPUT = $(BUILD)/Test_$(PROJECT_NAME).$(EXEC)
+
 all:unity/unity.c src/prac.c test/test_prac.c $(BUILD_DIR)
-	gcc unity/unity.c src/prac.c test/test_prac.c $(INC) -o $(call FixPath,$(BUILD_DIR)/$(PROJECT_NAME).$(EXEC))
+	gcc unity/unity.c src/prac.c test/test_prac.c $(INC) -o $(call FixPath,$(BUILD)/$(PROJECT_NAME).$(EXEC))
+test:$(BUILD)
+	gcc $(TEST_SRC) $(INC) -o $(TEST_OUTPUT) 
+	./$(TEST_OUTPUT)	
 
 $(BUILD_DIR):
-	mkdir $(BUILD_DIR)
+	mkdir $(BUILD)
 
 run:all
-	$(call FixPath,$(BUILD_DIR)/$(PROJECT_NAME).$(EXEC))
+	$(call FixPath,$(BUILD)/$(PROJECT_NAME).$(EXEC))
